@@ -1,4 +1,4 @@
-name: Airtable Music DB Sync
+name: Airtable Music DB
 
 on:
   workflow_dispatch:
@@ -8,25 +8,41 @@ on:
         required: true
         type: choice
         options:
+          - full-setup
           - provision-schema
-          - fetch-schema
+          - cleanup-default
+          - seed-genres
           - sync-artists
-          - seed-data
+          - seed-albums
+          - seed-songs
+          - fetch-schema
+          - add-record
+          - list-records
+          - delete-records
+      table:
+        description: 'Table name (for add/list/delete)'
+        required: false
+        type: string
+      data:
+        description: 'JSON data (for add/delete)'
+        required: false
+        type: string
   schedule:
-    # Fetch schema daily at 9:00 UTC
     - cron: '0 9 * * 1-5'
 
 env:
   AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
   AIRTABLE_BASE_ID: appGiSPPxrhb0LXYe
-  AIRTABLE_TABLE_ID: tbleKxAUsF9ue7PCb
 
 permissions:
   contents: write
 
 jobs:
-  airtable-sync:
+  airtable:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: airtable-music/scripts
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,21 +52,43 @@ jobs:
         with:
           python-version: '3.12'
 
+      # === SETUP ACTIONS ===
+
+      - name: Full Setup
+        if: github.event.inputs.action == 'full-setup'
+        run: python full_setup.py
+
       - name: Provision Schema
         if: github.event.inputs.action == 'provision-schema'
-        run: python airtable-music/scripts/provision_schema.py
+        run: python provision_schema.py
 
-      - name: Fetch Schema
-        if: github.event.inputs.action == 'fetch-schema' || github.event_name == 'schedule'
-        run: python airtable-music/scripts/fetch_base_schema.py
+      - name: Cleanup Default Table
+        if: github.event.inputs.action == 'cleanup-default'
+        run: python cleanup_default.py
+
+      # === SEED ACTIONS ===
+
+      - name: Seed Genres
+        if: github.event.inputs.action == 'seed-genres'
+        run: python -c "from seed_data import post_records, GENRES; n = post_records('Géneros', [{k:v for k,v in g.items() if k != 'Género Padre'} for g in GENRES]); print(f'Created {n} genres')"
 
       - name: Sync Warner Artists
         if: github.event.inputs.action == 'sync-artists'
-        run: python airtable-music/scripts/sync_warner_artists.py
+        run: python sync_warner_artists.py
 
-      - name: Seed Data
-        if: github.event.inputs.action == 'seed-data'
-        run: python airtable-music/scripts/seed_data.py
+      - name: Seed Albums
+        if: github.event.inputs.action == 'seed-albums'
+        run: python -c "from seed_data import post_records, SAMPLE_ALBUMS; n = post_records('Álbumes', SAMPLE_ALBUMS); print(f'Created {n} albums')"
+
+      - name: Seed Songs
+        if: github.event.inputs.action == 'seed-songs'
+        run: python seed_songs.py
+
+      # === FETCH ===
+
+      - name: Fetch Schema
+        if: github.event.inputs.action == 'fetch-schema' || github.event_name == 'schedule'
+        run: python fetch_base_schema.py
 
       - name: Upload schema artifact
         if: github.event.inputs.action == 'fetch-schema' || github.event_name == 'schedule'
@@ -62,8 +100,23 @@ jobs:
       - name: Commit schema changes
         if: github.event.inputs.action == 'fetch-schema' || github.event_name == 'schedule'
         run: |
+          cd ${{ github.workspace }}
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add airtable-music/schemas/
           git diff --staged --quiet || git commit -m "chore: update Airtable schema snapshot"
           git push
+
+      # === CRUD ACTIONS ===
+
+      - name: Add Record
+        if: github.event.inputs.action == 'add-record'
+        run: python crud_operations.py add '${{ github.event.inputs.table }}' '${{ github.event.inputs.data }}'
+
+      - name: List Records
+        if: github.event.inputs.action == 'list-records'
+        run: python crud_operations.py list '${{ github.event.inputs.table }}'
+
+      - name: Delete Records
+        if: github.event.inputs.action == 'delete-records'
+        run: python crud_operations.py delete '${{ github.event.inputs.table }}' '${{ github.event.inputs.data }}'
