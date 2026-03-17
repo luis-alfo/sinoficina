@@ -15,6 +15,9 @@ on:
           - sync-artists
           - seed-albums
           - seed-songs
+          - fetch-spotify-images
+          - fetch-artist-images
+          - fetch-album-covers
           - fetch-schema
           - add-record
           - list-records
@@ -35,6 +38,8 @@ on:
 env:
   AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
   AIRTABLE_BASE_ID: appGiSPPxrhb0LXYe
+  SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+  SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
   PYTHONPATH: ${{ github.workspace }}/airtable-music/scripts
 
 permissions:
@@ -86,6 +91,27 @@ jobs:
       - name: Seed Songs
         if: github.event.inputs.action == 'seed-songs'
         run: python seed_songs.py
+
+      # === SPOTIFY ===
+
+      - name: Ensure fields exist (Spotify)
+        if: >-
+          github.event.inputs.action == 'fetch-spotify-images' ||
+          github.event.inputs.action == 'fetch-artist-images' ||
+          github.event.inputs.action == 'fetch-album-covers'
+        run: python provision_schema.py
+
+      - name: Fetch Spotify Images (all)
+        if: github.event.inputs.action == 'fetch-spotify-images'
+        run: python fetch_spotify_images.py all
+
+      - name: Fetch Artist Images
+        if: github.event.inputs.action == 'fetch-artist-images'
+        run: python fetch_spotify_images.py artists
+
+      - name: Fetch Album Covers
+        if: github.event.inputs.action == 'fetch-album-covers'
+        run: python fetch_spotify_images.py albums
 
       # === FETCH ===
 
