@@ -77,16 +77,6 @@ def get_existing_playlists():
 
 def playlist_to_airtable(playlist_data):
     """Convert Spotify playlist data to Airtable fields."""
-    tracks = playlist_data.get("tracks", {})
-    total_tracks = tracks.get("total", 0)
-
-    # Calculate total duration from track items
-    total_duration_s = 0
-    for item in tracks.get("items", []):
-        track = item.get("track")
-        if track and track.get("duration_ms"):
-            total_duration_s += track["duration_ms"] // 1000
-
     owner = playlist_data.get("owner", {})
     image_url = get_best_image(playlist_data.get("images", []))
     spotify_url = playlist_data.get("external_urls", {}).get("spotify", "")
@@ -101,9 +91,6 @@ def playlist_to_airtable(playlist_data):
 
     if image_url:
         fields["Portada"] = [{"url": image_url}]
-
-    if total_duration_s > 0:
-        fields["Duración Total"] = total_duration_s
 
     if spotify_url:
         fields["Spotify URL"] = spotify_url

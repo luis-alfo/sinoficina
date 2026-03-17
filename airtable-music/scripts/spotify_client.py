@@ -80,25 +80,11 @@ def search_album(query, artist_name=None):
 
 
 def get_playlist(playlist_id):
-    """Get playlist metadata and tracks."""
+    """Get playlist metadata (without paginating all tracks)."""
+    fields = "name,description,owner,images,external_urls,public,followers,tracks.total"
     result = spotify_request(
-        f"https://api.spotify.com/v1/playlists/{playlist_id}"
+        f"https://api.spotify.com/v1/playlists/{playlist_id}?fields={fields}"
     )
-    if not result:
-        return None
-
-    # Fetch all tracks if paginated
-    tracks = result.get("tracks", {})
-    all_items = tracks.get("items", [])
-    next_url = tracks.get("next")
-    while next_url:
-        page = spotify_request(next_url)
-        if not page:
-            break
-        all_items.extend(page.get("items", []))
-        next_url = page.get("next")
-
-    result["tracks"]["items"] = all_items
     return result
 
 
