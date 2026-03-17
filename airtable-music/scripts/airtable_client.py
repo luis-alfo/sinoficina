@@ -39,7 +39,7 @@ def api_request(url, data=None, method="GET"):
     except HTTPError as e:
         error_body = e.read().decode() if e.fp else ""
         print(f"API Error: {e.code} {e.reason}\n{error_body}", file=sys.stderr)
-        return None
+        raise
 
 
 def list_records(table_name, fields=None, max_records=100, view=None):
@@ -56,8 +56,6 @@ def list_records(table_name, fields=None, max_records=100, view=None):
     all_records = []
     while url:
         result = api_request(url)
-        if not result:
-            break
         all_records.extend(result.get("records", []))
         offset = result.get("offset")
         url = f"{base}?offset={offset}&maxRecords={max_records}" if offset else None
@@ -69,14 +67,22 @@ def create_records(table_name, records_data):
     """Create records in a table. Handles batching (max 10 per request)."""
     url = table_url(table_name)
     created = 0
+    errors = []
 
     for i in range(0, len(records_data), 10):
         batch = records_data[i:i + 10]
         records = [{"fields": item} for item in batch]
-        result = api_request(url, data={"records": records}, method="POST")
-        if result:
+        try:
+            result = api_request(url, data={"records": records}, method="POST")
             created += len(result.get("records", []))
+        except Exception as e:
+            errors.append(str(e))
         time.sleep(0.25)
+
+    if created == 0 and records_data:
+        raise RuntimeError(
+            f"Failed to create any records in '{table_name}'. Errors: {'; '.join(errors)}"
+        )
 
     return created
 
@@ -89,8 +95,7 @@ def update_records(table_name, records):
     for i in range(0, len(records), 10):
         batch = records[i:i + 10]
         result = api_request(url, data={"records": batch}, method="PATCH")
-        if result:
-            updated += len(result.get("records", []))
+        updated += len(result.get("records", []))
         time.sleep(0.25)
 
     return updated
@@ -105,8 +110,7 @@ def delete_records(table_name, record_ids):
         params = "&".join(f"records[]={rid}" for rid in batch)
         url = f"{base}?{params}"
         result = api_request(url, method="DELETE")
-        if result:
-            deleted += len(result.get("records", []))
+        deleted += len(result.get("records", []))
         time.sleep(0.25)
 
     return deleted

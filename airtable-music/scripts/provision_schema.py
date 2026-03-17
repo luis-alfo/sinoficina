@@ -92,11 +92,14 @@ def add_missing_fields(table_name, table_def, existing_tables, table_id_map):
             continue
 
         print(f"  Adding field '{field_name}' to '{table_name}'...")
-        result = api_request(fields_url, data=config, method="POST")
-        if result and "id" in result:
-            print(f"  [ok] {field_name} -> {result['id']}")
-        else:
-            print(f"  [FAIL] {field_name}")
+        try:
+            result = api_request(fields_url, data=config, method="POST")
+            if "id" in result:
+                print(f"  [ok] {field_name} -> {result['id']}")
+            else:
+                print(f"  [FAIL] {field_name}")
+        except Exception as e:
+            print(f"  [FAIL] {field_name}: {e}")
         time.sleep(0.3)
 
 
@@ -135,11 +138,11 @@ def create_table(table_name, table_def, existing_tables, table_id_map):
 
     print(f"  Creating '{table_name}' ({len(fields)} fields)...")
     result = api_request(TABLES_URL, data=payload, method="POST")
-    if result and "id" in result:
+    if "id" in result:
         table_id_map[table_name] = result["id"]
         print(f"  [ok] '{table_name}' -> {result['id']}")
     else:
-        print(f"  [FAIL] Could not create '{table_name}'")
+        raise RuntimeError(f"Could not create table '{table_name}': unexpected response")
 
 
 def add_linked_fields(table_name, table_def, table_id_map, existing_tables):
@@ -171,11 +174,14 @@ def add_linked_fields(table_name, table_def, table_id_map, existing_tables):
         }
 
         print(f"  Linking {table_name}.{field_name} -> {linked_table}")
-        result = api_request(fields_url, data=config, method="POST")
-        if result and "id" in result:
-            print(f"  [ok] {field_name}")
-        else:
-            print(f"  [FAIL] {field_name}")
+        try:
+            result = api_request(fields_url, data=config, method="POST")
+            if "id" in result:
+                print(f"  [ok] {field_name}")
+            else:
+                print(f"  [FAIL] {field_name}")
+        except Exception as e:
+            print(f"  [FAIL] {field_name}: {e}")
         time.sleep(0.3)
 
 
