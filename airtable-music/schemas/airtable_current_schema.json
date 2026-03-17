@@ -1,0 +1,84 @@
+{
+  "tables": [
+    {
+      "id": "tbleKxAUsF9ue7PCb",
+      "name": "Table 1",
+      "primaryFieldId": "fldsqRas3t5vthTVw",
+      "fields": [
+        {
+          "type": "singleLineText",
+          "id": "fldsqRas3t5vthTVw",
+          "name": "Name"
+        },
+        {
+          "type": "multilineText",
+          "id": "fldJXN9YdMfPp3oOx",
+          "name": "Notes"
+        },
+        {
+          "type": "singleCollaborator",
+          "id": "fldQt1GghOKLHacjV",
+          "name": "Assignee"
+        },
+        {
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              {
+                "id": "selXi6umbtoX6jVip",
+                "name": "Todo",
+                "color": "redLight2"
+              },
+              {
+                "id": "sellbUJdSQidp5gOU",
+                "name": "In progress",
+                "color": "yellowLight2"
+              },
+              {
+                "id": "selcUaUJWPDLumz6d",
+                "name": "Done",
+                "color": "greenLight2"
+              }
+            ]
+          },
+          "id": "fld619xrlwjeoLvhq",
+          "name": "Status"
+        },
+        {
+          "type": "multipleAttachments",
+          "options": {
+            "isReversed": false
+          },
+          "id": "fldQwlEarTc7wJc2Y",
+          "name": "Attachments"
+        },
+        {
+          "type": "aiText",
+          "options": {
+            "referencedFieldIds": [
+              "fldQwlEarTc7wJc2Y"
+            ],
+            "prompt": [
+              "You are a professional document analyst specializing in summarizing content from various file types. Your task is to extract key points and provide a concise summary of the content found in the attached files. Ensure that the summary captures the main ideas and any important details without including unnecessary information.\n\nAnalyze the content of the attached files to identify the main themes and significant details. Summarize these points clearly and concisely, ensuring that the summary is informative and relevant to the document's purpose.\n\nFormat your response as plain text, keeping it concise and to the point. If you cannot summarize the content, output \"Unable to summarize the content.\" Example: \"The document discusses the impact of climate change on polar bears, highlighting the loss of habitat and food sources.\" (Real examples should be longer and more detailed.)\n\nFiles:\n",
+              {
+                "field": {
+                  "fieldId": "fldQwlEarTc7wJc2Y"
+                }
+              }
+            ]
+          },
+          "id": "fldvBPOAfBzIEItfZ",
+          "name": "Attachment Summary",
+          "description": "An AI generated summary of the Attachments field. Upload files to Attachments to generate a summary."
+        }
+      ],
+      "views": [
+        {
+          "id": "viwJuBajnfRVqYAyM",
+          "name": "Grid view",
+          "type": "grid"
+        }
+      ]
+    }
+  ]
+}
