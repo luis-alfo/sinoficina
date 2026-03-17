@@ -20,6 +20,9 @@ env:
   AIRTABLE_BASE_ID: appGiSPPxrhb0LXYe
   AIRTABLE_TABLE_ID: tbleKxAUsF9ue7PCb
 
+permissions:
+  contents: write
+
 jobs:
   airtable-sync:
     runs-on: ubuntu-latest
