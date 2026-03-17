@@ -79,6 +79,57 @@ def search_album(query, artist_name=None):
     return items[0] if items else None
 
 
+def get_playlist(playlist_id):
+    """Get playlist metadata and tracks."""
+    result = spotify_request(
+        f"https://api.spotify.com/v1/playlists/{playlist_id}"
+    )
+    if not result:
+        return None
+
+    # Fetch all tracks if paginated
+    tracks = result.get("tracks", {})
+    all_items = tracks.get("items", [])
+    next_url = tracks.get("next")
+    while next_url:
+        page = spotify_request(next_url)
+        if not page:
+            break
+        all_items.extend(page.get("items", []))
+        next_url = page.get("next")
+
+    result["tracks"]["items"] = all_items
+    return result
+
+
+def search_playlists(query, limit=10):
+    """Search for playlists on Spotify."""
+    params = urlencode({"q": query, "type": "playlist", "limit": limit})
+    result = spotify_request(f"https://api.spotify.com/v1/search?{params}")
+    if not result:
+        return []
+    return result.get("playlists", {}).get("items", [])
+
+
+def get_user_playlists(user_id, limit=50):
+    """Get public playlists from a Spotify user."""
+    params = urlencode({"limit": limit})
+    result = spotify_request(
+        f"https://api.spotify.com/v1/users/{user_id}/playlists?{params}"
+    )
+    if not result:
+        return []
+    return result.get("items", [])
+
+
+def extract_spotify_id(spotify_url):
+    """Extract ID from any Spotify URL (artist, playlist, album, track)."""
+    if not spotify_url:
+        return None
+    parts = spotify_url.rstrip("/").split("/")
+    return parts[-1].split("?")[0] or None
+
+
 def extract_artist_id(spotify_url):
     """Extract artist ID from a Spotify URL like https://open.spotify.com/artist/XXXXX."""
     if not spotify_url:

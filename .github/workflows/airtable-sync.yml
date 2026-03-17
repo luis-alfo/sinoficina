@@ -18,6 +18,7 @@ on:
           - fetch-spotify-images
           - fetch-artist-images
           - fetch-album-covers
+          - sync-playlists
           - fetch-schema
           - add-record
           - list-records
@@ -98,7 +99,8 @@ jobs:
         if: >-
           github.event.inputs.action == 'fetch-spotify-images' ||
           github.event.inputs.action == 'fetch-artist-images' ||
-          github.event.inputs.action == 'fetch-album-covers'
+          github.event.inputs.action == 'fetch-album-covers' ||
+          github.event.inputs.action == 'sync-playlists'
         run: python provision_schema.py
 
       - name: Fetch Spotify Images (all)
@@ -112,6 +114,10 @@ jobs:
       - name: Fetch Album Covers
         if: github.event.inputs.action == 'fetch-album-covers'
         run: python fetch_spotify_images.py albums
+
+      - name: Sync Warner Playlists
+        if: github.event.inputs.action == 'sync-playlists'
+        run: python sync_warner_playlists.py
 
       # === FETCH ===
 

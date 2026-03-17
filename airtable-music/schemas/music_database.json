@@ -85,6 +85,7 @@
         "Nº Canciones": { "type": "count", "linkedField": "Canciones" },
         "Duración Total": { "type": "duration" },
         "Seguidores": { "type": "number", "format": "integer" },
+        "Spotify URL": { "type": "url" },
         "Fecha Creación": { "type": "date" },
         "Última Actualización": { "type": "date" }
       }
