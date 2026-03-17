@@ -1,0 +1,61 @@
+name: Airtable Music DB Sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action to perform'
+        required: true
+        type: choice
+        options:
+          - fetch-schema
+          - sync-artists
+          - seed-data
+  schedule:
+    # Fetch schema daily at 9:00 UTC
+    - cron: '0 9 * * 1-5'
+
+env:
+  AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+  AIRTABLE_BASE_ID: appGiSPPxrhb0LXYe
+  AIRTABLE_TABLE_ID: tbleKxAUsF9ue7PCb
+
+jobs:
+  airtable-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch Schema
+        if: github.event.inputs.action == 'fetch-schema' || github.event_name == 'schedule'
+        run: python airtable-music/scripts/fetch_base_schema.py
+
+      - name: Sync Warner Artists
+        if: github.event.inputs.action == 'sync-artists'
+        run: python airtable-music/scripts/sync_warner_artists.py
+
+      - name: Seed Data
+        if: github.event.inputs.action == 'seed-data'
+        run: python airtable-music/scripts/seed_data.py
+
+      - name: Upload schema artifact
+        if: github.event.inputs.action == 'fetch-schema' || github.event_name == 'schedule'
+        uses: actions/upload-artifact@v4
+        with:
+          name: airtable-schema
+          path: airtable-music/schemas/airtable_current_schema.json
+
+      - name: Commit schema changes
+        if: github.event.inputs.action == 'fetch-schema' || github.event_name == 'schedule'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add airtable-music/schemas/
+          git diff --staged --quiet || git commit -m "chore: update Airtable schema snapshot"
+          git push

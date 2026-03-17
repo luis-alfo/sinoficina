@@ -1,0 +1,119 @@
+{
+  "base_id": "appGiSPPxrhb0LXYe",
+  "tables": {
+    "Artistas": {
+      "description": "Catálogo de artistas de Warner Music Global",
+      "fields": {
+        "Nombre": { "type": "singleLineText", "description": "Nombre artístico" },
+        "Nombre Real": { "type": "singleLineText", "description": "Nombre legal completo" },
+        "Foto": { "type": "multipleAttachments", "description": "Imagen de perfil del artista" },
+        "Género Principal": { "type": "multipleRecordLinks", "linkedTable": "Géneros" },
+        "País": { "type": "singleLineText" },
+        "Biografía": { "type": "multilineText" },
+        "Spotify URL": { "type": "url" },
+        "Oyentes Mensuales": { "type": "number", "format": "integer" },
+        "Seguidores": { "type": "number", "format": "integer" },
+        "Álbumes": { "type": "multipleRecordLinks", "linkedTable": "Álbumes" },
+        "Sello": { "type": "singleSelect", "options": [
+          "Warner Records", "Atlantic Records", "Elektra Records",
+          "Parlophone", "Warner Music Latina", "Reprise Records",
+          "Nonesuch Records", "Rhino Entertainment"
+        ]},
+        "Estado Contrato": { "type": "singleSelect", "options": ["Activo", "Finalizado", "En Negociación"] },
+        "Manager": { "type": "singleLineText" },
+        "Fecha Firma": { "type": "date" },
+        "Fecha Fin Contrato": { "type": "date" },
+        "Redes Sociales": { "type": "multilineText", "description": "JSON con links a redes sociales" },
+        "Verificado": { "type": "checkbox" }
+      }
+    },
+    "Álbumes": {
+      "description": "Discografía de los artistas",
+      "fields": {
+        "Título": { "type": "singleLineText" },
+        "Artista": { "type": "multipleRecordLinks", "linkedTable": "Artistas" },
+        "Portada": { "type": "multipleAttachments" },
+        "Fecha Lanzamiento": { "type": "date" },
+        "Tipo": { "type": "singleSelect", "options": ["Álbum", "EP", "Single", "Compilación", "Deluxe", "Live"] },
+        "Canciones": { "type": "multipleRecordLinks", "linkedTable": "Canciones" },
+        "Género": { "type": "multipleRecordLinks", "linkedTable": "Géneros" },
+        "Duración Total": { "type": "duration" },
+        "Nº Canciones": { "type": "count", "linkedField": "Canciones" },
+        "Streams Totales": { "type": "number", "format": "integer" },
+        "Sello": { "type": "singleSelect", "options": [
+          "Warner Records", "Atlantic Records", "Elektra Records",
+          "Parlophone", "Warner Music Latina"
+        ]},
+        "Certificación": { "type": "singleSelect", "options": ["Oro", "Platino", "Multi-Platino", "Diamante", "Sin certificar"] },
+        "ISRC Prefix": { "type": "singleLineText" },
+        "Distribuidor": { "type": "singleLineText" }
+      }
+    },
+    "Canciones": {
+      "description": "Tracks individuales con metadatos detallados",
+      "fields": {
+        "Título": { "type": "singleLineText" },
+        "Artista": { "type": "multipleRecordLinks", "linkedTable": "Artistas" },
+        "Álbum": { "type": "multipleRecordLinks", "linkedTable": "Álbumes" },
+        "Nº Track": { "type": "number", "format": "integer" },
+        "Duración": { "type": "duration" },
+        "Género": { "type": "multipleRecordLinks", "linkedTable": "Géneros" },
+        "Featuring": { "type": "multipleRecordLinks", "linkedTable": "Artistas" },
+        "Productores": { "type": "singleLineText" },
+        "Compositores": { "type": "singleLineText" },
+        "ISRC": { "type": "singleLineText", "description": "International Standard Recording Code" },
+        "BPM": { "type": "number", "format": "integer" },
+        "Tonalidad": { "type": "singleSelect", "options": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"] },
+        "Explícito": { "type": "checkbox" },
+        "Streams": { "type": "number", "format": "integer" },
+        "Popularidad": { "type": "rating", "max": 5 },
+        "Preview URL": { "type": "url" },
+        "Spotify Track ID": { "type": "singleLineText" },
+        "Playlists": { "type": "multipleRecordLinks", "linkedTable": "Playlists" },
+        "Fecha Lanzamiento": { "type": "date" }
+      }
+    },
+    "Playlists": {
+      "description": "Listas de reproducción curadas para formación",
+      "fields": {
+        "Nombre": { "type": "singleLineText" },
+        "Descripción": { "type": "multilineText" },
+        "Portada": { "type": "multipleAttachments" },
+        "Canciones": { "type": "multipleRecordLinks", "linkedTable": "Canciones" },
+        "Creador": { "type": "singleLineText" },
+        "Pública": { "type": "checkbox" },
+        "Nº Canciones": { "type": "count", "linkedField": "Canciones" },
+        "Duración Total": { "type": "duration" },
+        "Seguidores": { "type": "number", "format": "integer" },
+        "Fecha Creación": { "type": "date" },
+        "Última Actualización": { "type": "date" }
+      }
+    },
+    "Géneros": {
+      "description": "Clasificación de géneros y subgéneros musicales",
+      "fields": {
+        "Nombre": { "type": "singleLineText" },
+        "Género Padre": { "type": "multipleRecordLinks", "linkedTable": "Géneros" },
+        "Color": { "type": "singleLineText", "description": "Hex color para UI" },
+        "Artistas": { "type": "multipleRecordLinks", "linkedTable": "Artistas" },
+        "Descripción": { "type": "multilineText" }
+      }
+    },
+    "Gestión": {
+      "description": "Datos de management y gestión profesional",
+      "fields": {
+        "Artista": { "type": "multipleRecordLinks", "linkedTable": "Artistas" },
+        "Tipo Acuerdo": { "type": "singleSelect", "options": ["Recording", "Publishing", "360", "Licencia", "Distribución"] },
+        "Territorio": { "type": "multipleSelects", "options": ["Global", "LATAM", "España", "USA", "Europa", "Asia"] },
+        "Royalty Rate": { "type": "percent" },
+        "Anticipo": { "type": "currency", "symbol": "€" },
+        "Estado": { "type": "singleSelect", "options": ["Vigente", "Expirado", "En Revisión", "Borrador"] },
+        "Contacto A&R": { "type": "singleLineText" },
+        "Email A&R": { "type": "email" },
+        "Notas": { "type": "multilineText" },
+        "Documentos": { "type": "multipleAttachments" },
+        "Próxima Revisión": { "type": "date" }
+      }
+    }
+  }
+}
