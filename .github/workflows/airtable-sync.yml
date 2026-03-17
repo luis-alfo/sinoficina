@@ -35,6 +35,7 @@ on:
 env:
   AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
   AIRTABLE_BASE_ID: appGiSPPxrhb0LXYe
+  PYTHONPATH: ${{ github.workspace }}/airtable-music/scripts
 
 permissions:
   contents: write
@@ -72,7 +73,7 @@ jobs:
 
       - name: Seed Genres
         if: github.event.inputs.action == 'seed-genres'
-        run: python -c "from seed_data import post_records, GENRES; n = post_records('Géneros', [{k:v for k,v in g.items() if k != 'Género Padre'} for g in GENRES]); print(f'Created {n} genres')"
+        run: python -c "from seed_data import seed_genres; seed_genres()"
 
       - name: Sync Warner Artists
         if: github.event.inputs.action == 'sync-artists'
@@ -80,7 +81,7 @@ jobs:
 
       - name: Seed Albums
         if: github.event.inputs.action == 'seed-albums'
-        run: python -c "from seed_data import post_records, SAMPLE_ALBUMS; n = post_records('Álbumes', SAMPLE_ALBUMS); print(f'Created {n} albums')"
+        run: python -c "from seed_data import seed_albums; seed_albums()"
 
       - name: Seed Songs
         if: github.event.inputs.action == 'seed-songs'
