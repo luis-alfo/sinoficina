@@ -42,7 +42,7 @@
         "Streams Totales": { "type": "number", "format": "integer" },
         "Sello": { "type": "singleSelect", "options": [
           "Warner Records", "Atlantic Records", "Elektra Records",
-          "Parlophone", "Warner Music Latina"
+          "Parlophone", "Warner Music Latina", "Reprise Records"
         ]},
         "Certificación": { "type": "singleSelect", "options": ["Oro", "Platino", "Multi-Platino", "Diamante", "Sin certificar"] },
         "ISRC Prefix": { "type": "singleLineText" },
@@ -102,6 +102,7 @@
     "Gestión": {
       "description": "Datos de management y gestión profesional",
       "fields": {
+        "Referencia": { "type": "singleLineText", "description": "Identificador del acuerdo" },
         "Artista": { "type": "multipleRecordLinks", "linkedTable": "Artistas" },
         "Tipo Acuerdo": { "type": "singleSelect", "options": ["Recording", "Publishing", "360", "Licencia", "Distribución"] },
         "Territorio": { "type": "multipleSelects", "options": ["Global", "LATAM", "España", "USA", "Europa", "Asia"] },

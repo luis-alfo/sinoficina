@@ -65,6 +65,9 @@ def build_field_config(name, field_def):
     if field_type == "percent":
         config["options"] = {"precision": 2}
 
+    if field_type == "checkbox":
+        config["options"] = {"icon": "check", "color": "greenBright"}
+
     return config
 
 
@@ -84,6 +87,17 @@ def create_table(table_name, table_def, existing_tables, table_id_map):
 
     if not fields:
         fields.append({"name": "Name", "type": "singleLineText"})
+
+    # Airtable requires the first field (primary) to be singleLineText
+    # Move the first singleLineText to position 0 if it's not already there
+    if fields[0]["type"] != "singleLineText":
+        for i, f in enumerate(fields):
+            if f["type"] == "singleLineText":
+                fields.insert(0, fields.pop(i))
+                break
+        else:
+            # No singleLineText found, insert one
+            fields.insert(0, {"name": "Nombre", "type": "singleLineText"})
 
     payload = {"name": table_name, "fields": fields}
     if "description" in table_def:
