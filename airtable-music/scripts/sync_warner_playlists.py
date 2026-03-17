@@ -19,33 +19,43 @@ from spotify_client import (
 
 # Warner Music Spotify user IDs and curated playlist IDs
 WARNER_PROFILES = [
-    "warnermusic",
-    "warnermusicus",
-    "waborecords",
-    "atlanticrecords",
-    "warnerrecordsofficial",
-    "warnermusiclatam",
-    "warnerclassics",
-    "parlophonerecords",
-    "elektrarecords",
-    "nonesuchrecords",
+    "wmg_lobby",                    # Warner Music Group (official)
+    "warnerrecordsofficial",        # Warner Records
+    "warnermusicnashville",         # Warner Records Nashville
+    "warner.music.central.europe",  # Warner Music Central Europe
+    "atlanticrecords",              # Atlantic Records
+    "nonesuchrecords",              # Nonesuch Records
 ]
 
-# Known Warner Music / subsidiary playlist IDs
-KNOWN_PLAYLIST_IDS = []
+# Known Warner Music / subsidiary playlist IDs (verified from Spotify)
+KNOWN_PLAYLIST_IDS = [
+    "4G8YMEnXpljdSERHuKCbxD",  # Now Playing at Warner Records
+    "3d4GqpwBY7JJ0sipGzpuhy",  # Soundrop — Warner Records
+    "7AD9l3ss4fOiXHeMWEdtVa",  # Eric Clapton Discography — Warner Records
+    "51nLCHXyNwAn9SZfFPyXYD",  # Welcome Back + Top Songs — Warner Records
+    "6r5va1sKbfAaUXsi1qzVmR",  # NMF — Warner Music Group
+    "5pELxwpjobVQmsYjCt6BTI",  # Warner Music Group
+    "1vNxw7TgapvufJqj35Dafd",  # New Warner Music
+    "0TJY4WN5dmKpbSZf77VAJe",  # Warner Music Greatest Hits — Topsify UK
+    "4sjY92ZWVdLJYdPmhpJQXh",  # Atlantic Records: Presents
+    "1HyGbAS20bjdtBGBTO5YlO",  # SCOOB! Soundtrack — Atlantic Records
+    "4EMqp0WlIjXtzl8Df4FhNM",  # Wake Up! It's The Holidays — Atlantic Records
+    "6dxtJsxSK9zpAPjf473CJz",  # Ultimate EDM Playlist — Atlantic Records
+    "4IpYGUkrEXL7C8dWYFBEKo",  # Atlantic Records Celebrates: Black Music Month
+    "3wJXF52EXPj8EL583RCqp4",  # New Music from Elektra — Elektra Records
+    "4ywfF9SyZgVY8Mr8ZFlZB9",  # CABRA: Creator Collection — Warner Chappell Music
+]
 
 # Search queries to find Warner-related playlists
 SEARCH_QUERIES = [
     "Warner Music",
-    "Warner Music playlist",
-    "Atlantic Records",
-    "Atlantic Records playlist",
     "Warner Records",
-    "Warner Classics",
-    "Parlophone Records",
+    "Atlantic Records",
     "Elektra Records",
     "Warner Music Latin",
-    "Warner Music Group",
+    "Parlophone Records",
+    "Nonesuch Records",
+    "Warner Chappell",
 ]
 
 
