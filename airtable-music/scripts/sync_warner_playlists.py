@@ -20,27 +20,32 @@ from spotify_client import (
 # Warner Music Spotify user IDs and curated playlist IDs
 WARNER_PROFILES = [
     "warnermusic",
+    "warnermusicus",
+    "waborecords",
     "atlanticrecords",
     "warnerrecordsofficial",
+    "warnermusiclatam",
+    "warnerclassics",
+    "parlophonerecords",
+    "elektrarecords",
+    "nonesuchrecords",
 ]
 
-# Known Warner Music playlist IDs (official curated playlists)
-KNOWN_PLAYLIST_IDS = [
-    "37i9dQZF1DX2L0iB23Enbq",  # Viva Latino
-    "37i9dQZF1DXcBWIGoYBM5M",  # Today's Top Hits
-    "37i9dQZF1DX0XUsuxWHRQd",  # RapCaviar
-    "37i9dQZF1DWXRqgorJj26U",  # Rock Classics
-    "37i9dQZF1DX4SBhb3fqCJd",  # Are & Be
-    "37i9dQZF1DX10zKzsJ2jva",  # Viva Latino
-]
+# Known Warner Music / subsidiary playlist IDs
+KNOWN_PLAYLIST_IDS = []
 
 # Search queries to find Warner-related playlists
 SEARCH_QUERIES = [
     "Warner Music",
+    "Warner Music playlist",
     "Atlantic Records",
-    "Warner Records playlist",
+    "Atlantic Records playlist",
+    "Warner Records",
+    "Warner Classics",
+    "Parlophone Records",
     "Elektra Records",
-    "Warner Music Latina",
+    "Warner Music Latin",
+    "Warner Music Group",
 ]
 
 
