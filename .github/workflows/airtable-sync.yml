@@ -94,6 +94,13 @@ jobs:
 
       # === SPOTIFY ===
 
+      - name: Ensure fields exist (Spotify)
+        if: >-
+          github.event.inputs.action == 'fetch-spotify-images' ||
+          github.event.inputs.action == 'fetch-artist-images' ||
+          github.event.inputs.action == 'fetch-album-covers'
+        run: python provision_schema.py
+
       - name: Fetch Spotify Images (all)
         if: github.event.inputs.action == 'fetch-spotify-images'
         run: python fetch_spotify_images.py all

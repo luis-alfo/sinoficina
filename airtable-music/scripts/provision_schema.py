@@ -71,10 +71,40 @@ def build_field_config(name, field_def):
     return config
 
 
+def add_missing_fields(table_name, table_def, existing_tables, table_id_map):
+    """Add fields defined in schema but missing from the existing Airtable table."""
+    table_info = existing_tables.get(table_name)
+    if not table_info:
+        return
+
+    table_id = table_info["id"]
+    existing_fields = get_existing_field_names(table_info)
+    fields_url = f"{TABLES_URL}/{table_id}/fields"
+
+    for field_name, field_def in table_def["fields"].items():
+        if field_name in existing_fields:
+            continue
+        if field_def["type"] == LINKED_TYPE or field_def["type"] in SKIP_TYPES:
+            continue
+
+        config = build_field_config(field_name, field_def)
+        if not config:
+            continue
+
+        print(f"  Adding field '{field_name}' to '{table_name}'...")
+        result = api_request(fields_url, data=config, method="POST")
+        if result and "id" in result:
+            print(f"  [ok] {field_name} -> {result['id']}")
+        else:
+            print(f"  [FAIL] {field_name}")
+        time.sleep(0.3)
+
+
 def create_table(table_name, table_def, existing_tables, table_id_map):
     if table_name in existing_tables:
-        print(f"  [skip] '{table_name}' already exists")
+        print(f"  [exists] '{table_name}' — checking for missing fields...")
         table_id_map[table_name] = existing_tables[table_name]["id"]
+        add_missing_fields(table_name, table_def, existing_tables, table_id_map)
         return
 
     fields = []
