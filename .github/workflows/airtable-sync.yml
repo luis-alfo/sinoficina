@@ -23,10 +23,12 @@ on:
         description: 'Table name (for add/list/delete)'
         required: false
         type: string
+        default: '-'
       data:
         description: 'JSON data (for add/delete)'
         required: false
         type: string
+        default: '-'
   schedule:
     - cron: '0 9 * * 1-5'
 
