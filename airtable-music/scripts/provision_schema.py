@@ -51,7 +51,7 @@ def build_field_config(name, field_def):
         config["options"] = {"precision": 0 if field_def.get("format") == "integer" else 1}
 
     if field_type == "rating":
-        config["options"] = {"max": field_def.get("max", 5), "color": "yellowBright"}
+        config["options"] = {"max": field_def.get("max", 5), "icon": "star", "color": "yellowBright"}
 
     if field_type == "currency":
         config["options"] = {"precision": 2, "symbol": field_def.get("symbol", "$")}
