@@ -19,28 +19,43 @@ from spotify_client import (
 
 # Warner Music Spotify user IDs and curated playlist IDs
 WARNER_PROFILES = [
-    "warnermusic",
-    "atlanticrecords",
-    "warnerrecordsofficial",
+    "wmg_lobby",                    # Warner Music Group (official)
+    "warnerrecordsofficial",        # Warner Records
+    "warnermusicnashville",         # Warner Records Nashville
+    "warner.music.central.europe",  # Warner Music Central Europe
+    "atlanticrecords",              # Atlantic Records
+    "nonesuchrecords",              # Nonesuch Records
 ]
 
-# Known Warner Music playlist IDs (official curated playlists)
+# Known Warner Music / subsidiary playlist IDs (verified from Spotify)
 KNOWN_PLAYLIST_IDS = [
-    "37i9dQZF1DX2L0iB23Enbq",  # Viva Latino
-    "37i9dQZF1DXcBWIGoYBM5M",  # Today's Top Hits
-    "37i9dQZF1DX0XUsuxWHRQd",  # RapCaviar
-    "37i9dQZF1DWXRqgorJj26U",  # Rock Classics
-    "37i9dQZF1DX4SBhb3fqCJd",  # Are & Be
-    "37i9dQZF1DX10zKzsJ2jva",  # Viva Latino
+    "4G8YMEnXpljdSERHuKCbxD",  # Now Playing at Warner Records
+    "3d4GqpwBY7JJ0sipGzpuhy",  # Soundrop — Warner Records
+    "7AD9l3ss4fOiXHeMWEdtVa",  # Eric Clapton Discography — Warner Records
+    "51nLCHXyNwAn9SZfFPyXYD",  # Welcome Back + Top Songs — Warner Records
+    "6r5va1sKbfAaUXsi1qzVmR",  # NMF — Warner Music Group
+    "5pELxwpjobVQmsYjCt6BTI",  # Warner Music Group
+    "1vNxw7TgapvufJqj35Dafd",  # New Warner Music
+    "0TJY4WN5dmKpbSZf77VAJe",  # Warner Music Greatest Hits — Topsify UK
+    "4sjY92ZWVdLJYdPmhpJQXh",  # Atlantic Records: Presents
+    "1HyGbAS20bjdtBGBTO5YlO",  # SCOOB! Soundtrack — Atlantic Records
+    "4EMqp0WlIjXtzl8Df4FhNM",  # Wake Up! It's The Holidays — Atlantic Records
+    "6dxtJsxSK9zpAPjf473CJz",  # Ultimate EDM Playlist — Atlantic Records
+    "4IpYGUkrEXL7C8dWYFBEKo",  # Atlantic Records Celebrates: Black Music Month
+    "3wJXF52EXPj8EL583RCqp4",  # New Music from Elektra — Elektra Records
+    "4ywfF9SyZgVY8Mr8ZFlZB9",  # CABRA: Creator Collection — Warner Chappell Music
 ]
 
 # Search queries to find Warner-related playlists
 SEARCH_QUERIES = [
     "Warner Music",
+    "Warner Records",
     "Atlantic Records",
-    "Warner Records playlist",
     "Elektra Records",
-    "Warner Music Latina",
+    "Warner Music Latin",
+    "Parlophone Records",
+    "Nonesuch Records",
+    "Warner Chappell",
 ]
 
 
