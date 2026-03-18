@@ -1,80 +1,1090 @@
 {
   "tables": [
     {
-      "id": "tbleKxAUsF9ue7PCb",
-      "name": "Table 1",
-      "primaryFieldId": "fldsqRas3t5vthTVw",
+      "id": "tbluUVYM0hLGtQLTj",
+      "name": "Álbumes",
+      "description": "Discografía de los artistas",
+      "primaryFieldId": "fldiTOqMwtMbtzaJa",
       "fields": [
         {
           "type": "singleLineText",
-          "id": "fldsqRas3t5vthTVw",
-          "name": "Name"
-        },
-        {
-          "type": "multilineText",
-          "id": "fldJXN9YdMfPp3oOx",
-          "name": "Notes"
-        },
-        {
-          "type": "singleCollaborator",
-          "id": "fldQt1GghOKLHacjV",
-          "name": "Assignee"
-        },
-        {
-          "type": "singleSelect",
-          "options": {
-            "choices": [
-              {
-                "id": "selXi6umbtoX6jVip",
-                "name": "Todo",
-                "color": "redLight2"
-              },
-              {
-                "id": "sellbUJdSQidp5gOU",
-                "name": "In progress",
-                "color": "yellowLight2"
-              },
-              {
-                "id": "selcUaUJWPDLumz6d",
-                "name": "Done",
-                "color": "greenLight2"
-              }
-            ]
-          },
-          "id": "fld619xrlwjeoLvhq",
-          "name": "Status"
+          "id": "fldiTOqMwtMbtzaJa",
+          "name": "Título"
         },
         {
           "type": "multipleAttachments",
           "options": {
             "isReversed": false
           },
-          "id": "fldQwlEarTc7wJc2Y",
-          "name": "Attachments"
+          "id": "fldnNhhdFoPbeRf3l",
+          "name": "Portada"
         },
         {
-          "type": "aiText",
+          "type": "date",
           "options": {
-            "referencedFieldIds": [
-              "fldQwlEarTc7wJc2Y"
-            ],
-            "prompt": [
-              "You are a professional document analyst specializing in summarizing content from various file types. Your task is to extract key points and provide a concise summary of the content found in the attached files. Ensure that the summary captures the main ideas and any important details without including unnecessary information.\n\nAnalyze the content of the attached files to identify the main themes and significant details. Summarize these points clearly and concisely, ensuring that the summary is informative and relevant to the document's purpose.\n\nFormat your response as plain text, keeping it concise and to the point. If you cannot summarize the content, output \"Unable to summarize the content.\" Example: \"The document discusses the impact of climate change on polar bears, highlighting the loss of habitat and food sources.\" (Real examples should be longer and more detailed.)\n\nFiles:\n",
+            "dateFormat": {
+              "name": "iso",
+              "format": "YYYY-MM-DD"
+            }
+          },
+          "id": "fld2MtUuQBLkyj5Hu",
+          "name": "Fecha Lanzamiento"
+        },
+        {
+          "type": "singleSelect",
+          "options": {
+            "choices": [
               {
-                "field": {
-                  "fieldId": "fldQwlEarTc7wJc2Y"
-                }
+                "id": "selYvJrVzYCv7DGym",
+                "name": "Álbum",
+                "color": "blueLight2"
+              },
+              {
+                "id": "selNsUN7Y6Gtr1t2o",
+                "name": "EP",
+                "color": "cyanLight2"
+              },
+              {
+                "id": "selMynYKCSsjXTRwE",
+                "name": "Single",
+                "color": "tealLight2"
+              },
+              {
+                "id": "selJ0vpjoLH7AjDUP",
+                "name": "Compilación",
+                "color": "greenLight2"
+              },
+              {
+                "id": "seldpcRYz9RL6Qsj5",
+                "name": "Deluxe",
+                "color": "yellowLight2"
+              },
+              {
+                "id": "selcWWrG3RUQiE9go",
+                "name": "Live",
+                "color": "orangeLight2"
               }
             ]
           },
-          "id": "fldvBPOAfBzIEItfZ",
-          "name": "Attachment Summary",
-          "description": "An AI generated summary of the Attachments field. Upload files to Attachments to generate a summary."
+          "id": "fldiRtK4wyYPhtC8y",
+          "name": "Tipo"
+        },
+        {
+          "type": "duration",
+          "options": {
+            "durationFormat": "h:mm:ss"
+          },
+          "id": "fldJbprooX2V5cp9R",
+          "name": "Duración Total"
+        },
+        {
+          "type": "number",
+          "options": {
+            "precision": 0
+          },
+          "id": "fldnJrWikf14cuvPd",
+          "name": "Streams Totales"
+        },
+        {
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              {
+                "id": "selyDux44yycWf3yM",
+                "name": "Warner Records",
+                "color": "blueLight2"
+              },
+              {
+                "id": "selZAao7FXwITgMR0",
+                "name": "Atlantic Records",
+                "color": "cyanLight2"
+              },
+              {
+                "id": "selfyXORMJwcn0eRK",
+                "name": "Elektra Records",
+                "color": "tealLight2"
+              },
+              {
+                "id": "selQuvAWSEvKxmTqa",
+                "name": "Parlophone",
+                "color": "greenLight2"
+              },
+              {
+                "id": "selTVS17Znk7X6HhS",
+                "name": "Warner Music Latina",
+                "color": "yellowLight2"
+              }
+            ]
+          },
+          "id": "fldMO3W4pmnxBTB3O",
+          "name": "Sello"
+        },
+        {
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              {
+                "id": "selTNeEqzZ7XLKeV7",
+                "name": "Oro",
+                "color": "blueLight2"
+              },
+              {
+                "id": "selvEuXgJmNfyVRDc",
+                "name": "Platino",
+                "color": "cyanLight2"
+              },
+              {
+                "id": "selx1Yw8qYURptZId",
+                "name": "Multi-Platino",
+                "color": "tealLight2"
+              },
+              {
+                "id": "sel116gup2ngB9zbZ",
+                "name": "Diamante",
+                "color": "greenLight2"
+              },
+              {
+                "id": "selDpO9EGaP7JmRoT",
+                "name": "Sin certificar",
+                "color": "yellowLight2"
+              }
+            ]
+          },
+          "id": "flduPr50DoDFn4cXv",
+          "name": "Certificación"
+        },
+        {
+          "type": "singleLineText",
+          "id": "fldewbcfim1Vuicvp",
+          "name": "ISRC Prefix"
+        },
+        {
+          "type": "singleLineText",
+          "id": "fldyAFNStRK6He24f",
+          "name": "Distribuidor"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblzy2cqjtg7k8jfy",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldOCvyQNEj2y5y5a"
+          },
+          "id": "fldTRJFtLK4PJiBXZ",
+          "name": "Género"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblMy7Hq3TyTrFPNQ",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldV2fUxiwZLjFGjj"
+          },
+          "id": "fldjb7hyFfT25IZFe",
+          "name": "Artistas"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblMy7Hq3TyTrFPNQ",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fld7Y6jKF160P5r4D"
+          },
+          "id": "fld7rk5f4ChgxsUK5",
+          "name": "Artista"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblTEg84SbxOFa9h7",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fld3OA1ypM5pxXSJh"
+          },
+          "id": "fldHpR6nZ2Hd4Rqna",
+          "name": "Canciones"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblTEg84SbxOFa9h7",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fld10TgYrzk3JEjfo"
+          },
+          "id": "fldfBnKDL16tSEpWY",
+          "name": "Canciones 2"
         }
       ],
       "views": [
         {
-          "id": "viwJuBajnfRVqYAyM",
+          "id": "viwpEnuoCTbnEnYZb",
+          "name": "Grid view",
+          "type": "grid"
+        }
+      ]
+    },
+    {
+      "id": "tblzy2cqjtg7k8jfy",
+      "name": "Géneros",
+      "description": "Clasificación de géneros y subgéneros musicales",
+      "primaryFieldId": "fldH1UJFSfV4he8gQ",
+      "fields": [
+        {
+          "type": "singleLineText",
+          "id": "fldH1UJFSfV4he8gQ",
+          "name": "Nombre"
+        },
+        {
+          "type": "singleLineText",
+          "id": "fldTyx92SXt8eqbre",
+          "name": "Color",
+          "description": "Hex color para UI"
+        },
+        {
+          "type": "multilineText",
+          "id": "fldkpZmYbspRcilTX",
+          "name": "Descripción"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tbluUVYM0hLGtQLTj",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldTRJFtLK4PJiBXZ"
+          },
+          "id": "fldOCvyQNEj2y5y5a",
+          "name": "Álbumes"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblzy2cqjtg7k8jfy",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldFGvGms3O0o7xYy"
+          },
+          "id": "fldjLre6FcDAhoTFT",
+          "name": "Género Padre"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblzy2cqjtg7k8jfy",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldjLre6FcDAhoTFT"
+          },
+          "id": "fldFGvGms3O0o7xYy",
+          "name": "From field: Género Padre"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblMy7Hq3TyTrFPNQ",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldcXqYLi0VmhDUja"
+          },
+          "id": "fldko6SQgDb2k15Nd",
+          "name": "Artistas"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblTEg84SbxOFa9h7",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldxd0GdlvSike7WS"
+          },
+          "id": "fldiQBvS0BzSC3Dno",
+          "name": "Canciones"
+        }
+      ],
+      "views": [
+        {
+          "id": "viwJjt4b333dePOTv",
+          "name": "Grid view",
+          "type": "grid"
+        }
+      ]
+    },
+    {
+      "id": "tblMy7Hq3TyTrFPNQ",
+      "name": "Artistas",
+      "description": "Catálogo de artistas de Warner Music Global",
+      "primaryFieldId": "fldLjWDWLgM64Kjff",
+      "fields": [
+        {
+          "type": "singleLineText",
+          "id": "fldLjWDWLgM64Kjff",
+          "name": "Nombre",
+          "description": "Nombre artístico"
+        },
+        {
+          "type": "singleLineText",
+          "id": "fldSMbg4OhpUkAUUQ",
+          "name": "Nombre Real",
+          "description": "Nombre legal completo"
+        },
+        {
+          "type": "multipleAttachments",
+          "options": {
+            "isReversed": false
+          },
+          "id": "fldj0g1apynaOL2A8",
+          "name": "Foto",
+          "description": "Imagen de perfil del artista"
+        },
+        {
+          "type": "singleLineText",
+          "id": "fldeZebh3T8WSz9bC",
+          "name": "País"
+        },
+        {
+          "type": "multilineText",
+          "id": "fldKJpXcEUfk1bAFD",
+          "name": "Biografía"
+        },
+        {
+          "type": "url",
+          "id": "fldr3QvYuAudiyITo",
+          "name": "Spotify URL"
+        },
+        {
+          "type": "number",
+          "options": {
+            "precision": 0
+          },
+          "id": "fldDHODWIkvyE502N",
+          "name": "Oyentes Mensuales"
+        },
+        {
+          "type": "number",
+          "options": {
+            "precision": 0
+          },
+          "id": "fld5b3tz1rBg2LCYj",
+          "name": "Seguidores"
+        },
+        {
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              {
+                "id": "seloPVldgyz78o6qI",
+                "name": "Warner Records",
+                "color": "blueLight2"
+              },
+              {
+                "id": "sel7Xufz2bt0U2bDC",
+                "name": "Atlantic Records",
+                "color": "cyanLight2"
+              },
+              {
+                "id": "selrRsqAh7HUQnBmC",
+                "name": "Elektra Records",
+                "color": "tealLight2"
+              },
+              {
+                "id": "selEMR1kMOXaxEXmF",
+                "name": "Parlophone",
+                "color": "greenLight2"
+              },
+              {
+                "id": "selb8hDqx8hCnMqwT",
+                "name": "Warner Music Latina",
+                "color": "yellowLight2"
+              },
+              {
+                "id": "sel9BRMQAmWfunOuX",
+                "name": "Reprise Records",
+                "color": "orangeLight2"
+              },
+              {
+                "id": "selW1d4AJ15uuknKC",
+                "name": "Nonesuch Records",
+                "color": "redLight2"
+              },
+              {
+                "id": "selcwE24hK5AjS5VG",
+                "name": "Rhino Entertainment",
+                "color": "pinkLight2"
+              }
+            ]
+          },
+          "id": "fldkApdErTY6S71fW",
+          "name": "Sello"
+        },
+        {
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              {
+                "id": "selfcmxZk5plPL0oN",
+                "name": "Activo",
+                "color": "blueLight2"
+              },
+              {
+                "id": "selqM2QK4CsJgBSK7",
+                "name": "Finalizado",
+                "color": "cyanLight2"
+              },
+              {
+                "id": "seljybgtA4di2rYLR",
+                "name": "En Negociación",
+                "color": "tealLight2"
+              }
+            ]
+          },
+          "id": "fldXDFqntMAym0cWE",
+          "name": "Estado Contrato"
+        },
+        {
+          "type": "singleLineText",
+          "id": "fldF44HvecW5LkJOy",
+          "name": "Manager"
+        },
+        {
+          "type": "date",
+          "options": {
+            "dateFormat": {
+              "name": "iso",
+              "format": "YYYY-MM-DD"
+            }
+          },
+          "id": "fldITAdNtmnVn17Cb",
+          "name": "Fecha Firma"
+        },
+        {
+          "type": "date",
+          "options": {
+            "dateFormat": {
+              "name": "iso",
+              "format": "YYYY-MM-DD"
+            }
+          },
+          "id": "fld13UO0xeLRQUAa6",
+          "name": "Fecha Fin Contrato"
+        },
+        {
+          "type": "multilineText",
+          "id": "fldhsn5gLlx5BsoEN",
+          "name": "Redes Sociales",
+          "description": "JSON con links a redes sociales"
+        },
+        {
+          "type": "checkbox",
+          "options": {
+            "icon": "check",
+            "color": "greenBright"
+          },
+          "id": "fldSpLiEUfFyFPS1F",
+          "name": "Verificado"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblzy2cqjtg7k8jfy",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldko6SQgDb2k15Nd"
+          },
+          "id": "fldcXqYLi0VmhDUja",
+          "name": "Género Principal"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tbluUVYM0hLGtQLTj",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldjb7hyFfT25IZFe"
+          },
+          "id": "fldV2fUxiwZLjFGjj",
+          "name": "Álbumes"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tbluUVYM0hLGtQLTj",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fld7rk5f4ChgxsUK5"
+          },
+          "id": "fld7Y6jKF160P5r4D",
+          "name": "Álbumes 2"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblXgutkMBojTvaD4",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fld3AO9GHYhp8JwiV"
+          },
+          "id": "fldgp5J37Z6NPuT0m",
+          "name": "Gestión"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblTEg84SbxOFa9h7",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldQDtuph5MkvR0et"
+          },
+          "id": "fldMFzPYFOw8gkQyB",
+          "name": "Canciones"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblTEg84SbxOFa9h7",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldqQFsMSaUVypx0o"
+          },
+          "id": "fldAsnbpfWseSA3py",
+          "name": "Canciones 2"
+        }
+      ],
+      "views": [
+        {
+          "id": "viwqLqYuOc4dvjdnQ",
+          "name": "Grid view",
+          "type": "grid"
+        }
+      ]
+    },
+    {
+      "id": "tbl3YMksBFeNPskLj",
+      "name": "Playlists",
+      "description": "Listas de reproducción curadas para formación",
+      "primaryFieldId": "fldAgEFdNk7jSKOX0",
+      "fields": [
+        {
+          "type": "singleLineText",
+          "id": "fldAgEFdNk7jSKOX0",
+          "name": "Nombre"
+        },
+        {
+          "type": "multilineText",
+          "id": "flddIo9NMV67ASgHA",
+          "name": "Descripción"
+        },
+        {
+          "type": "multipleAttachments",
+          "options": {
+            "isReversed": false
+          },
+          "id": "fld8oAMleDwULIQ0K",
+          "name": "Portada"
+        },
+        {
+          "type": "singleLineText",
+          "id": "fldClQC5E9sOgpShR",
+          "name": "Creador"
+        },
+        {
+          "type": "checkbox",
+          "options": {
+            "icon": "check",
+            "color": "greenBright"
+          },
+          "id": "fldcp2ll1olNWVCsu",
+          "name": "Pública"
+        },
+        {
+          "type": "duration",
+          "options": {
+            "durationFormat": "h:mm:ss"
+          },
+          "id": "fld4PyhVPCJddVeo9",
+          "name": "Duración Total"
+        },
+        {
+          "type": "number",
+          "options": {
+            "precision": 0
+          },
+          "id": "fldbIYs5HMTlAlWUy",
+          "name": "Seguidores"
+        },
+        {
+          "type": "date",
+          "options": {
+            "dateFormat": {
+              "name": "iso",
+              "format": "YYYY-MM-DD"
+            }
+          },
+          "id": "fldaefCWZk8orPn1j",
+          "name": "Fecha Creación"
+        },
+        {
+          "type": "date",
+          "options": {
+            "dateFormat": {
+              "name": "iso",
+              "format": "YYYY-MM-DD"
+            }
+          },
+          "id": "fldrnnAxGq5ad0brV",
+          "name": "Última Actualización"
+        },
+        {
+          "type": "url",
+          "id": "fldTahyBEUbssPsJl",
+          "name": "Spotify URL"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblTEg84SbxOFa9h7",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldW3eTceO7ySRi18"
+          },
+          "id": "fldPhLSkU0WGh6x6L",
+          "name": "Canciones"
+        }
+      ],
+      "views": [
+        {
+          "id": "viwtxNuqy8hrjdQUr",
+          "name": "Grid view",
+          "type": "grid"
+        }
+      ]
+    },
+    {
+      "id": "tblXgutkMBojTvaD4",
+      "name": "Gestión",
+      "description": "Datos de management y gestión profesional",
+      "primaryFieldId": "fldoY2FxjD7XpSHiw",
+      "fields": [
+        {
+          "type": "singleLineText",
+          "id": "fldoY2FxjD7XpSHiw",
+          "name": "Referencia",
+          "description": "Identificador del acuerdo"
+        },
+        {
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              {
+                "id": "sel8Tbs2cL2vAjZ14",
+                "name": "Recording",
+                "color": "blueLight2"
+              },
+              {
+                "id": "seluxxKO4Q6xQQRzW",
+                "name": "Publishing",
+                "color": "cyanLight2"
+              },
+              {
+                "id": "selj2Sac5rkjGU5jt",
+                "name": "360",
+                "color": "tealLight2"
+              },
+              {
+                "id": "selU6hsUSq1za639N",
+                "name": "Licencia",
+                "color": "greenLight2"
+              },
+              {
+                "id": "sel3SwCxfYa1ofIQb",
+                "name": "Distribución",
+                "color": "yellowLight2"
+              }
+            ]
+          },
+          "id": "fldqIX8svJlYlQLYJ",
+          "name": "Tipo Acuerdo"
+        },
+        {
+          "type": "multipleSelects",
+          "options": {
+            "choices": [
+              {
+                "id": "selukiFIyC1FqbwSK",
+                "name": "Global",
+                "color": "blueLight2"
+              },
+              {
+                "id": "sel8Gom0ngeVoU0E7",
+                "name": "LATAM",
+                "color": "cyanLight2"
+              },
+              {
+                "id": "selIqN11oGEOyMSsD",
+                "name": "España",
+                "color": "tealLight2"
+              },
+              {
+                "id": "selkxY6YykrXkJFWH",
+                "name": "USA",
+                "color": "greenLight2"
+              },
+              {
+                "id": "selppdhv4eX1YmbI7",
+                "name": "Europa",
+                "color": "yellowLight2"
+              },
+              {
+                "id": "sel2RaT88MowJViIV",
+                "name": "Asia",
+                "color": "orangeLight2"
+              }
+            ]
+          },
+          "id": "fldAlzvYUWKb2xCyJ",
+          "name": "Territorio"
+        },
+        {
+          "type": "percent",
+          "options": {
+            "precision": 2
+          },
+          "id": "fldy467pi0RgGPRJU",
+          "name": "Royalty Rate"
+        },
+        {
+          "type": "currency",
+          "options": {
+            "precision": 2,
+            "symbol": "€"
+          },
+          "id": "fldesk82QVW9cNCQx",
+          "name": "Anticipo"
+        },
+        {
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              {
+                "id": "selbgqM4bTdGdWHUr",
+                "name": "Vigente",
+                "color": "blueLight2"
+              },
+              {
+                "id": "sellv2VsQv7yktcjk",
+                "name": "Expirado",
+                "color": "cyanLight2"
+              },
+              {
+                "id": "selYgaofSAwosXs7D",
+                "name": "En Revisión",
+                "color": "tealLight2"
+              },
+              {
+                "id": "selfi7liAmyGGVTQt",
+                "name": "Borrador",
+                "color": "greenLight2"
+              }
+            ]
+          },
+          "id": "fldjZYUF7bb6lXxKo",
+          "name": "Estado"
+        },
+        {
+          "type": "singleLineText",
+          "id": "fldyPndr7JxpQqhlP",
+          "name": "Contacto A&R"
+        },
+        {
+          "type": "email",
+          "id": "fldi4LJ6MhDc3CFJi",
+          "name": "Email A&R"
+        },
+        {
+          "type": "multilineText",
+          "id": "fld9CXmnPpnCGSrE4",
+          "name": "Notas"
+        },
+        {
+          "type": "multipleAttachments",
+          "options": {
+            "isReversed": false
+          },
+          "id": "fldSiyWbAi7vzByGw",
+          "name": "Documentos"
+        },
+        {
+          "type": "date",
+          "options": {
+            "dateFormat": {
+              "name": "iso",
+              "format": "YYYY-MM-DD"
+            }
+          },
+          "id": "fldnkDWd44JT0thOf",
+          "name": "Próxima Revisión"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblMy7Hq3TyTrFPNQ",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldgp5J37Z6NPuT0m"
+          },
+          "id": "fld3AO9GHYhp8JwiV",
+          "name": "Artista"
+        }
+      ],
+      "views": [
+        {
+          "id": "viw9QuJhyosrPXful",
+          "name": "Grid view",
+          "type": "grid"
+        }
+      ]
+    },
+    {
+      "id": "tblTEg84SbxOFa9h7",
+      "name": "Canciones",
+      "description": "Tracks individuales con metadatos detallados",
+      "primaryFieldId": "fld2gq5Dz8GtTVFRq",
+      "fields": [
+        {
+          "type": "singleLineText",
+          "id": "fld2gq5Dz8GtTVFRq",
+          "name": "Título"
+        },
+        {
+          "type": "number",
+          "options": {
+            "precision": 0
+          },
+          "id": "fldQ45HtX1ggcelqR",
+          "name": "Nº Track"
+        },
+        {
+          "type": "duration",
+          "options": {
+            "durationFormat": "h:mm:ss"
+          },
+          "id": "fldc4TmXAwv11bxnD",
+          "name": "Duración"
+        },
+        {
+          "type": "singleLineText",
+          "id": "fldG6lHqAUrl79xXr",
+          "name": "Productores"
+        },
+        {
+          "type": "singleLineText",
+          "id": "fldIYHxSUU0BN6pe4",
+          "name": "Compositores"
+        },
+        {
+          "type": "singleLineText",
+          "id": "fldrWAqwiYMQmZAec",
+          "name": "ISRC",
+          "description": "International Standard Recording Code"
+        },
+        {
+          "type": "number",
+          "options": {
+            "precision": 0
+          },
+          "id": "fldmGFDQ1WZJ3Ikyr",
+          "name": "BPM"
+        },
+        {
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              {
+                "id": "selPHwfz4W8emzDKB",
+                "name": "C",
+                "color": "blueLight2"
+              },
+              {
+                "id": "selBsSwuzL6runhFv",
+                "name": "C#",
+                "color": "cyanLight2"
+              },
+              {
+                "id": "selZcVqpjEXjo7IuK",
+                "name": "D",
+                "color": "tealLight2"
+              },
+              {
+                "id": "selMut9KcWdGjp2t1",
+                "name": "D#",
+                "color": "greenLight2"
+              },
+              {
+                "id": "selgGnFukxrxlssFv",
+                "name": "E",
+                "color": "yellowLight2"
+              },
+              {
+                "id": "selIzDcNTTTly9nja",
+                "name": "F",
+                "color": "orangeLight2"
+              },
+              {
+                "id": "sel7E4YEGSCyiVoV7",
+                "name": "F#",
+                "color": "redLight2"
+              },
+              {
+                "id": "selz4HrDMKrj9f5Tf",
+                "name": "G",
+                "color": "pinkLight2"
+              },
+              {
+                "id": "selcqMTGyveX5pMAu",
+                "name": "G#",
+                "color": "purpleLight2"
+              },
+              {
+                "id": "selHZgm42BNCgJnWl",
+                "name": "A",
+                "color": "grayLight2"
+              },
+              {
+                "id": "selvJ25QR4WXYvrd4",
+                "name": "A#",
+                "color": "blueLight2"
+              },
+              {
+                "id": "selq9BXqav51cnw3l",
+                "name": "B",
+                "color": "cyanLight2"
+              }
+            ]
+          },
+          "id": "fldwcivs75FvM8Yet",
+          "name": "Tonalidad"
+        },
+        {
+          "type": "checkbox",
+          "options": {
+            "icon": "check",
+            "color": "greenBright"
+          },
+          "id": "fldSW6zhSp6LQd74W",
+          "name": "Explícito"
+        },
+        {
+          "type": "number",
+          "options": {
+            "precision": 0
+          },
+          "id": "fldSKkCYkrXhK95u6",
+          "name": "Streams"
+        },
+        {
+          "type": "rating",
+          "options": {
+            "icon": "star",
+            "max": 5,
+            "color": "yellowBright"
+          },
+          "id": "fld5LRXPYfGghHAoq",
+          "name": "Popularidad"
+        },
+        {
+          "type": "url",
+          "id": "fld5lIYH0bWRK95ok",
+          "name": "Preview URL"
+        },
+        {
+          "type": "singleLineText",
+          "id": "fldklxgBC2bvPdvvp",
+          "name": "Spotify Track ID"
+        },
+        {
+          "type": "date",
+          "options": {
+            "dateFormat": {
+              "name": "iso",
+              "format": "YYYY-MM-DD"
+            }
+          },
+          "id": "fldqtgCDBuvkNEO55",
+          "name": "Fecha Lanzamiento"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tbluUVYM0hLGtQLTj",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldHpR6nZ2Hd4Rqna"
+          },
+          "id": "fld3OA1ypM5pxXSJh",
+          "name": "Álbumes"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblMy7Hq3TyTrFPNQ",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldMFzPYFOw8gkQyB"
+          },
+          "id": "fldQDtuph5MkvR0et",
+          "name": "Artista"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tbluUVYM0hLGtQLTj",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldfBnKDL16tSEpWY"
+          },
+          "id": "fld10TgYrzk3JEjfo",
+          "name": "Álbum"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblzy2cqjtg7k8jfy",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldiQBvS0BzSC3Dno"
+          },
+          "id": "fldxd0GdlvSike7WS",
+          "name": "Género"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tblMy7Hq3TyTrFPNQ",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldAsnbpfWseSA3py"
+          },
+          "id": "fldqQFsMSaUVypx0o",
+          "name": "Featuring"
+        },
+        {
+          "type": "multipleRecordLinks",
+          "options": {
+            "linkedTableId": "tbl3YMksBFeNPskLj",
+            "isReversed": false,
+            "prefersSingleRecordLink": false,
+            "inverseLinkFieldId": "fldPhLSkU0WGh6x6L"
+          },
+          "id": "fldW3eTceO7ySRi18",
+          "name": "Playlists"
+        }
+      ],
+      "views": [
+        {
+          "id": "viwYyjaU3DlTEzxdI",
           "name": "Grid view",
           "type": "grid"
         }
