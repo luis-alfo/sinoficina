@@ -1,7 +1,7 @@
 ---
 title: Wrapper FCF
 client: Sinoficina (producto propio)
-status: draft # draft | final
+status: final # draft | final
 created: 2026-10-22
 updated: 2026-10-22
 ---
@@ -29,7 +29,7 @@ La app nace para el Guinardó C.F., pero cualquier Equipo de la FCF puede usarla
 ## 2. Contexto del encargo
 
 - **Producto propio de Sinoficina**, sin cliente externo. Luis decide el producto. Las incógnitas que dependen de terceros (permiso de la FCF, datos de menores) están en `client-questions.md`.
-- **Tipo de proyecto:** MVP de validación con el propio club, construido para abrirse a cualquier club de la FCF sin rehacerlo. `[ASSUMPTION: inferido de "a priori solo mi club, pero cualquier club puede añadir su equipo"]`
+- **Tipo de proyecto:** MVP de validación con el propio club, construido para abrirse a cualquier club de la FCF sin rehacerlo.
 - **Entrega en dos hitos** (ver §7):
   - **Hito 1, "el Guinardó la usa":** seguimiento y estadísticas, sin Cuentas.
   - **Hito 2, "listo para otros clubs":** Cuentas, roles, Dossier, notificaciones y Marca manual.
@@ -115,10 +115,10 @@ El Seguidor puede buscar un Club por nombre y ver sus Equipos. Realiza UJ-1.
 El Seguidor puede seguir y dejar de seguir Equipos sin Cuenta. Realiza UJ-1.
 
 **Consecuencias (testeables):**
-- Tras seguir un Equipo, su próximo Partido y su último resultado aparecen en el Feed en menos de 1 minuto. `[ASSUMPTION]`
+- Tras seguir un Equipo, su próximo Partido y su último resultado aparecen en el Feed en menos de 1 minuto.
 - Sin Cuenta, los Equipos seguidos se guardan en el dispositivo; si el usuario borra los datos del navegador, se pierden.
 - Con Cuenta, se sincronizan entre dispositivos; al iniciar sesión, los Equipos seguidos en el dispositivo se suman a los de la Cuenta.
-- Sin límite de Equipos seguidos. `[ASSUMPTION]`
+- Sin límite de Equipos seguidos.
 - El seguimiento sigue al Equipo cuando cambia de Grupo (nueva fase) o de Temporada.
 
 ### 5.2 Feed
@@ -233,7 +233,7 @@ El Seguidor ve los 11 Jugadores (7 en Futbol 7) con más titularidades, con dors
 El Seguidor ve qué Jugadores del Equipo tienen una sanción pendiente, cuántos Partidos les quedan y si pueden jugar el próximo Partido.
 
 **Consecuencias (testeables):**
-- Si no se puede deducir con certeza cuántos Partidos quedan, se muestra la sanción sin contador ni veredicto. `[ASSUMPTION]`
+- Si no se puede deducir con certeza cuántos Partidos quedan, se muestra la sanción sin contador ni veredicto.
 
 ### 5.8 Protección de menores
 
@@ -257,7 +257,7 @@ En las Categorías de menores, Jugadores, técnicos y árbitros aparecen Anonimi
 - Las estadísticas se mantienen.
 
 #### FR-17: Retirar un nombre a petición
-El Administrador puede Anonimizar a un Jugador concreto de cualquier Competición si la persona lo pide. `[ASSUMPTION]`
+El Administrador puede Anonimizar a un Jugador concreto de cualquier Competición si la persona lo pide.
 
 ### 5.9 Tema y Marca
 
@@ -310,7 +310,7 @@ Los permisos de Dossier, Marca manual y Claves se asignan a un Equipo o a un Clu
 El Gestor ve la lista de los próximos Partidos de Liga de su Equipo y puede pedir el Dossier del rival de cualquiera de ellos.
 
 **Consecuencias (testeables):**
-- El Dossier está listo en menos de 5 minutos. `[ASSUMPTION]`
+- El Dossier está listo en menos de 5 minutos.
 - Si el rival no tiene Partidos válidos, el Dossier lo dice en lugar de mostrar estadísticas vacías.
 - Si varios Gestores piden el mismo Dossier, existe uno solo.
 
@@ -343,7 +343,7 @@ El usuario con Cuenta recibe Notificaciones de:
 - resultado publicado de un Partido de un Equipo seguido;
 - resultado modificado (la FCF corrige un resultado ya avisado);
 - cambio de fecha, hora o campo de un próximo Partido, o aplazamiento;
-- recordatorio de Partido con hora y campo `[ASSUMPTION: el mismo día, 3 horas antes]`;
+- recordatorio de Partido con hora y campo, el mismo día 3 horas antes;
 - sanción del comité a un Jugador de un Equipo seguido;
 - cambio de estado de su Solicitud de gestión.
 
@@ -357,13 +357,13 @@ El usuario con Cuenta recibe Notificaciones de:
 ### 5.13 Idioma, frescura, fuente y medición
 
 #### FR-29: Catalán y castellano
-La interfaz está en catalán y en castellano. Por defecto, el idioma del dispositivo si es uno de los dos, y si no, catalán; se cambia en los ajustes. `[ASSUMPTION]` Los datos de la FCF se muestran tal como vienen, sin traducir.
+La interfaz está en catalán y en castellano. Por defecto, el idioma del dispositivo si es uno de los dos, y si no, catalán; se cambia en los ajustes. Los datos de la FCF se muestran tal como vienen, sin traducir.
 
 #### FR-30: Frescura de los datos
 Un resultado, un Acta, un cambio de Partido o una sanción publicados por la FCF aparecen en la app en una hora como máximo.
 
 #### FR-31: Si la FCF no responde
-Si la API de la FCF cae o cambia, la app sigue mostrando los últimos datos buenos con "actualizado hace X". Si pasan más de 3 horas sin datos nuevos `[ASSUMPTION]`, muestra un aviso de que la FCF no responde. Nunca muestra un dato dudoso en lugar de uno viejo.
+Si la API de la FCF cae o cambia, la app sigue mostrando los últimos datos buenos con "actualizado hace X". Si pasan más de 3 horas sin datos nuevos, muestra un aviso de que la FCF no responde. Nunca muestra un dato dudoso en lugar de uno viejo.
 
 #### FR-32: Atribución
 La app indica que los datos proceden de la FCF y que no es una app oficial de la FCF.
@@ -391,7 +391,7 @@ El Administrador ve, por Equipo, cuántos Seguidores tiene (con y sin Cuenta) y 
 - La app abre directamente en la Ficha de equipo del Guinardó A, sin búsqueda ni Feed.
 - FR-4 (Resumen), FR-5 (Partidos), FR-6 (Clasificación), FR-7 (Ficha de partido) y FR-8 (Plantilla), completos.
 - FR-18 (Tema automático), FR-30 (frescura) y FR-32 (atribución).
-- Solo en castellano, como el dossier de Luis. `[ASSUMPTION]`
+- En catalán y castellano (FR-29), con catalán por defecto.
 - Publicada en una dirección web que Luis pueda compartir con el club.
 
 **Hito 1, "el Guinardó la usa"** (sin Cuentas): FR-1, FR-2 (sin sincronización), FR-3 a FR-18, FR-29 a FR-32, y la parte de FR-33 que no necesita Cuentas.
@@ -410,9 +410,9 @@ El Administrador ve, por Equipo, cuántos Seguidores tiene (con y sin Cuenta) y 
 
 ## 8. Métricas de éxito
 
-- **SM-1:** el cuerpo técnico del Guinardó A usa la app cada semana en lugar de fcf.cat (desde el Hito 1) y del dossier manual (desde el Hito 2). Objetivo: 4 Jornadas seguidas. `[ASSUMPTION: cifra]` Se mide con FR-33. Valida FR-4 a FR-14 y FR-24 a FR-27.
+- **SM-1:** el cuerpo técnico del Guinardó A usa la app cada semana en lugar de fcf.cat (desde el Hito 1) y del dossier manual (desde el Hito 2). Objetivo: 4 Jornadas seguidas. Se mide con FR-33. Valida FR-4 a FR-14 y FR-24 a FR-27.
 - **SM-2:** 20 Seguidores del Guinardó A en el primer mes tras el Hito 1. Se mide con FR-33. Valida FR-1 a FR-3.
-- **SM-3:** preparar un rival pasa de horas a menos de 10 minutos. `[ASSUMPTION: cifra]` Valida FR-24 y FR-25.
+- **SM-3:** preparar un rival pasa de horas a menos de 10 minutos. Valida FR-24 y FR-25.
 - **Counter-metric SM-4:** ninguna discrepancia entre la app y la FCF en resultados, clasificación y Actas que no se explique por FR-30 (retraso) o FR-31 (FCF caída). Valida FR-30 y FR-31.
 
 ## 9. Preguntas abiertas
@@ -426,7 +426,9 @@ El Administrador ve, por Equipo, cuántos Seguidores tiene (con y sin Cuenta) y 
 
 ## 10. Índice de Assumptions
 
-| # | Dónde | Assumption | Confirma |
+*Todas confirmadas por Luis al finalizar el PRD (22/10/2026); A-10 cambiada a petición suya. Ya no quedan `[ASSUMPTION]` abiertas en el documento.*
+
+| # | Dónde | Decisión | Confirmada por |
 |---|---|---|---|
 | A-1 | §2 | Tipo de proyecto: MVP de validación con el propio club, abierto a todos | Luis |
 | A-2 | FR-2 | Un Equipo seguido aparece en el Feed en menos de 1 minuto | Luis |
@@ -437,5 +439,5 @@ El Administrador ve, por Equipo, cuántos Seguidores tiene (con y sin Cuenta) y 
 | A-7 | FR-28 | Recordatorio el mismo día, 3 horas antes | Luis |
 | A-8 | FR-29 | Idioma por defecto: el del dispositivo; si no es ca ni es, catalán | Luis |
 | A-9 | FR-31 | Aviso de FCF caída tras 3 horas sin datos | Luis |
-| A-10 | §7.1 | La Primera entrega está solo en castellano | Luis |
+| A-10 | §7.1 | La Primera entrega es bilingüe, con catalán por defecto | Luis |
 | A-11 | SM-1, SM-3 | Cifras: 4 Jornadas seguidas; menos de 10 minutos | Luis |

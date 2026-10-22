@@ -141,6 +141,7 @@ Detalle completo en `fcf/ENDPOINTS.md`; cliente en `fcf/fcf_client.py`.
 ### Wrapper FCF (`wrapper-fcf/`)
 - App propia de Sinoficina (sin cliente externo) que envuelve los datos de la FCF con mejor interfaz, centrada en equipo/club, al estilo Sofascore / goalscore.
 - Vive en `wrapper-fcf/` y se extraerá a un repo standalone: no debe depender de nada del resto de sinoficina.
+- PRD final (22/10/2026): `wrapper-fcf/_bmad-output/planning-artifacts/prd-wrapper-fcf/prd.md` (FR-1..FR-33). Ahí están el glosario y todas las decisiones; el porqué de cada una, en `.decision-log.md`.
 - Material de referencia: el dossier de rivales del Guinardó (Quarta Catalana, Grup 20) que hizo Luis.
 - Modelo de negocio: preparado para que alguien pague por dar de alta un club con sus estadísticas (un seguidor o quien gestiona el club). Pasarela de pago futura; los roles deben soportarla desde v1.
 - Fútbol base: en la FCF el F7 es casi todo base (alevín, benjamín…). En categorías de menores la app muestra iniciales + dorsal.
