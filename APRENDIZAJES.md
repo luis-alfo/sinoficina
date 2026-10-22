@@ -133,6 +133,8 @@ Detalle completo en `fcf/ENDPOINTS.md`; cliente en `fcf/fcf_client.py`.
 - El PRD describe capacidades, no tecnología. El stack (React + Supabase + Vercel) se registra en el decision log y entra en las specs.
 - Lo no confirmado se marca `[ASSUMPTION]` y no bloquea: se avanza con un default.
 - Config por producto en `<producto>/_bmad/bmm/config.yaml`; artefactos en `<producto>/_bmad-output/`.
+- **Forma de entrevistar a Luis:** usar preguntas de opciones (AskUserQuestion), con la opción recomendada primero. Las preguntas abiertas en texto se quedan sin responder.
+- Luis prefiere cerrar el PRD completo antes de construir, aunque haya prisa por entregar.
 
 ## 8. Productos
 
@@ -141,6 +143,7 @@ Detalle completo en `fcf/ENDPOINTS.md`; cliente en `fcf/fcf_client.py`.
 - Vive en `wrapper-fcf/` y se extraerá a un repo standalone: no debe depender de nada del resto de sinoficina.
 - Material de referencia: el dossier de rivales del Guinardó (Quarta Catalana, Grup 20) que hizo Luis.
 - Modelo de negocio: preparado para que alguien pague por dar de alta un club con sus estadísticas (un seguidor o quien gestiona el club). Pasarela de pago futura; los roles deben soportarla desde v1.
+- Fútbol base: en la FCF el F7 es casi todo base (alevín, benjamín…). En categorías de menores la app muestra iniciales + dorsal.
 - Marca dinámica: la UI adopta los colores y el escudo del equipo que sigues. La FCF ya da escudo y colores de equipación de cada equipo (`/api/competition/equipacions`).
 
 ---
