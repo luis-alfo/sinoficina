@@ -1,0 +1,9 @@
+# Config del nch-product-kit (nocodehackers) para el producto Wrapper FCF.
+# Rutas relativas a la raíz del producto (wrapper-fcf/), que pasará a ser un repo standalone.
+project_name: Wrapper FCF
+user_name: Luis
+communication_language: Spanish
+document_output_language: Spanish
+user_skill_level: intermediate
+planning_artifacts: _bmad-output/planning-artifacts
+implementation_artifacts: _bmad-output/implementation-artifacts

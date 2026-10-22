@@ -125,4 +125,22 @@ Detalle completo en `fcf/ENDPOINTS.md`; cliente en `fcf/fcf_client.py`.
 
 ---
 
+## 7. Flujo de producto — nch-product-kit (NocodeHackers)
+
+- Plugin de Claude Code `nch-product-kit` (repo `nocodehackers-studio/nch-claude-plugins`). Instalación local:
+  `/plugin marketplace add nocodehackers-studio/nch-claude-plugins` y `/plugin install nch-product-kit@nocodehackers`.
+- Flujo: **nch-prd** (idea → PRD con FR-1..N) → **nch-spec** (una feature → spec `ready-for-dev`) → **nch-dev** (spec → código + revisión adversarial). Revisión humana entre cada paso.
+- El PRD describe capacidades, no tecnología. El stack (React + Supabase + Vercel) se registra en el decision log y entra en las specs.
+- Lo no confirmado se marca `[ASSUMPTION]` y no bloquea: se avanza con un default.
+- Config por producto en `<producto>/_bmad/bmm/config.yaml`; artefactos en `<producto>/_bmad-output/`.
+
+## 8. Productos
+
+### Wrapper FCF (`wrapper-fcf/`)
+- App propia de Sinoficina (sin cliente externo) que envuelve los datos de la FCF con mejor interfaz, centrada en equipo/club, al estilo Sofascore / goalscore.
+- Vive en `wrapper-fcf/` y se extraerá a un repo standalone: no debe depender de nada del resto de sinoficina.
+- Material de referencia: el dossier de rivales del Guinardó (Quarta Catalana, Grup 20) que hizo Luis.
+
+---
+
 *Última actualización: 2026-10-22*
