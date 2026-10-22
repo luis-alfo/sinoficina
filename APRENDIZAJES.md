@@ -125,4 +125,28 @@ Detalle completo en `fcf/ENDPOINTS.md`; cliente en `fcf/fcf_client.py`.
 
 ---
 
+## 7. Flujo de producto — nch-product-kit (NocodeHackers)
+
+- Plugin de Claude Code `nch-product-kit` (repo `nocodehackers-studio/nch-claude-plugins`). Instalación local:
+  `/plugin marketplace add nocodehackers-studio/nch-claude-plugins` y `/plugin install nch-product-kit@nocodehackers`.
+- Flujo: **nch-prd** (idea → PRD con FR-1..N) → **nch-spec** (una feature → spec `ready-for-dev`) → **nch-dev** (spec → código + revisión adversarial). Revisión humana entre cada paso.
+- El PRD describe capacidades, no tecnología. El stack (React + Supabase + Vercel) se registra en el decision log y entra en las specs.
+- Lo no confirmado se marca `[ASSUMPTION]` y no bloquea: se avanza con un default.
+- Config por producto en `<producto>/_bmad/bmm/config.yaml`; artefactos en `<producto>/_bmad-output/`.
+- **Forma de entrevistar a Luis:** usar preguntas de opciones (AskUserQuestion), con la opción recomendada primero. Las preguntas abiertas en texto se quedan sin responder.
+- Luis prefiere cerrar el PRD completo antes de construir, aunque haya prisa por entregar.
+
+## 8. Productos
+
+### Wrapper FCF (`wrapper-fcf/`)
+- App propia de Sinoficina (sin cliente externo) que envuelve los datos de la FCF con mejor interfaz, centrada en equipo/club, al estilo Sofascore / goalscore.
+- Vive en `wrapper-fcf/` y se extraerá a un repo standalone: no debe depender de nada del resto de sinoficina.
+- PRD final (22/10/2026): `wrapper-fcf/_bmad-output/planning-artifacts/prd-wrapper-fcf/prd.md` (FR-1..FR-33). Ahí están el glosario y todas las decisiones; el porqué de cada una, en `.decision-log.md`.
+- Material de referencia: el dossier de rivales del Guinardó (Quarta Catalana, Grup 20) que hizo Luis.
+- Modelo de negocio: preparado para que alguien pague por dar de alta un club con sus estadísticas (un seguidor o quien gestiona el club). Pasarela de pago futura; los roles deben soportarla desde v1.
+- Fútbol base: en la FCF el F7 es casi todo base (alevín, benjamín…). En categorías de menores la app muestra iniciales + dorsal.
+- Marca dinámica: la UI adopta los colores y el escudo del equipo que sigues. La FCF ya da escudo y colores de equipación de cada equipo (`/api/competition/equipacions`).
+
+---
+
 *Última actualización: 2026-10-22*
