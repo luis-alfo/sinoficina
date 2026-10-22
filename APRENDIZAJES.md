@@ -140,6 +140,8 @@ Detalle completo en `fcf/ENDPOINTS.md`; cliente en `fcf/fcf_client.py`.
 - App propia de Sinoficina (sin cliente externo) que envuelve los datos de la FCF con mejor interfaz, centrada en equipo/club, al estilo Sofascore / goalscore.
 - Vive en `wrapper-fcf/` y se extraerá a un repo standalone: no debe depender de nada del resto de sinoficina.
 - Material de referencia: el dossier de rivales del Guinardó (Quarta Catalana, Grup 20) que hizo Luis.
+- Modelo de negocio: preparado para que alguien pague por dar de alta un club con sus estadísticas (un seguidor o quien gestiona el club). Pasarela de pago futura; los roles deben soportarla desde v1.
+- Marca dinámica: la UI adopta los colores y el escudo del equipo que sigues. La FCF ya da escudo y colores de equipación de cada equipo (`/api/competition/equipacions`).
 
 ---
 
