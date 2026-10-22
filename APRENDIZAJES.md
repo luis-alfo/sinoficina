@@ -103,4 +103,26 @@ El `AIRTABLE_BASE_ID` está hardcodeado en el workflow (`appGiSPPxrhb0LXYe`).
 
 ---
 
-*Última actualización: 2026-03-17*
+## 6. FCF (Federació Catalana de Futbol) — API interna de fcf.cat
+
+Detalle completo en `fcf/ENDPOINTS.md`; cliente en `fcf/fcf_client.py`.
+
+### La web es Next.js y expone `/api/*` sin autenticación
+- Las páginas (p. ej. `/ca/competicio/acta/{id}`) se renderizan en servidor: el navegador no hace llamadas visibles.
+- Pero el mismo dominio sirve route handlers `/api/competition/*`, `/api/clubs/*`, `/api/camps/*`, `/api/search` que devuelven JSON sin token.
+- **Método:** descargar los chunks `/_next/static/chunks/*.js` de varias páginas y buscar `"/api/` y `` `/api/ ``. Las rutas que solo usa el servidor (como el acta) se adivinan probando: 404 = no existe, 500 = existe pero parámetro incorrecto.
+
+### El acta de un partido
+- `GET /api/competition/acta?codacta={id}` — el parámetro es `codacta` (no `id`, `actaId`…).
+- El id del acta es el número de la URL pública y el campo `CODACTA` de `/api/competition/partidos?grupId=`.
+
+### Jerarquía de IDs
+- temporada (`22` = 2026-2027) → disciplina (`19308233` = Futbol 11) → competición → grupo → jornada → acta.
+- Equipo (`CODEQUIPO`) ≠ club (`CODCLUB`): un club tiene varios equipos (A, B, C…).
+
+### Hora del partido
+- `COMIENZO1` del acta trae sufijo `Z` pero es hora local de Catalunya. No convertir de UTC.
+
+---
+
+*Última actualización: 2026-10-22*
